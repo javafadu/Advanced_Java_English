@@ -3,12 +3,12 @@ package EnumType;
 public class MainTest {
 
     public static void main(String[] args) {
-        useConstantMethod(1);
+/*        useConstantMethod(1);
         useConstantMethod(2);
         useConstantMethod(3);
         useConstantMethod(4);
         useConstantMethod(100);
-        useConstantMethod(5); // NO CTE
+        useConstantMethod(5); // NO CTE*/
 
 
         useEnumMethod(TransactionType.DEPOSIT);
@@ -47,7 +47,19 @@ public class MainTest {
         } else if (transactionType==TransactionType.OTHER) {
             System.out.println("Other");
         }
+
+        // Enum type Methods
+        System.out.println("Enum Type: "+transactionType.name());  // Enum name
+        System.out.println("Enum Code Value : "+transactionType.getTransactionCode()); // Enum code
+        System.out.println("Enum Ordinal : "+transactionType.ordinal()); // Enum ordinal
+        System.out.println();
+
+
     }
+
+
+
+
 
 
 }

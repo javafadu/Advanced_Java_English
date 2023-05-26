@@ -5,7 +5,7 @@ public enum Role {
     ROLE_TEACHER("Teacher"),
     ROLE_STUDENT("Student");
 
-    String name;
+    private String name;
 
     // Constructor
     Role (String name) {

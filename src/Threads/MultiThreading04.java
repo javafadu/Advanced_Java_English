@@ -23,30 +23,41 @@ public class MultiThreading04 {
         });
         thread2.start();
 
-        long endTime = System.currentTimeMillis();
+        long endTime = 0;
 
         // USE join
         try {
             thread1.join();
             thread2.join();
+            endTime = System.currentTimeMillis();
         } catch (InterruptedException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
 
-        System.out.println("Transaction Time : " + (endTime-startTime));
+        System.out.println("Transaction Time : " + (endTime - startTime));
+        // synchronized method : 2544 ms
+        // synchronized block : 2224 ms
 
     }
 }
 
 class Brackets2 {
-    public synchronized void generateBrackets() {
-        for (int i = 1; i <= 10; i++) {
-            if (i <= 5) {
-                System.out.print("[");
-            } else {
-                System.out.print("]");
-            }
-        } // end of for
+    public void generateBrackets() {
+        // TR1: print [[]] (synchronized)
+        // this: method caller thread
+
+        synchronized (this) {
+            for (int i = 1; i <= 10; i++) {
+                if (i <= 5) {
+                    System.out.print("[");
+                } else {
+                    System.out.print("]");
+                }
+            } // end of for
+        }
+
+
+        // TR2: wait 50ms
         System.out.println("");
         for (int i = 1; i <= 5; i++) {
             try {

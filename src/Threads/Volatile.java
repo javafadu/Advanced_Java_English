@@ -1,5 +1,14 @@
 package Threads;
+/*
+According to the performance issue, sometimes variables are kept in CPU Caches,
+There are several seeds in the CPU and each threads works on different seeds of CPU,
+For this reason, each thread keeps different values on the same variable
+ */
 
+/*
+volatile: in case of any changes on variable/object, it guarantees that variable is seen by another threads.
+volatile: variables are not stored in CPU caches, they are kept in RAM
+ */
 public class Volatile {
 
     volatile public static int flag = 0;

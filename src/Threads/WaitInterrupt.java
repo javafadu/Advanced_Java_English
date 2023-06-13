@@ -15,7 +15,7 @@ public class WaitInterrupt {
             }
         });
         thread1.setName("Withdraw Thread");
-        thread1.start();
+        thread1.start(); // firstly build thread then run the run() method
 
 
         // Deposit Thread

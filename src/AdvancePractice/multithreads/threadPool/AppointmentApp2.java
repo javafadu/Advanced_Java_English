@@ -14,6 +14,9 @@ NOTES:
  */
 
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /*
 TASK :
     Create an appointment app
@@ -25,8 +28,38 @@ public class AppointmentApp2 {
 
     public static void main(String[] args) {
 
+        ExecutorService service = Executors.newFixedThreadPool(3);
 
+        String[] users = {"Tolstoy", "Balzac","Victor Hugo","George Orwell","Dostoevsky"};
+
+        AppointmentCenter2 appCenter = new AppointmentCenter2();
+
+
+        for (String user:users
+             ) {
+            MyThread thread = new MyThread(appCenter);
+            service.execute(thread);
+        }
+
+        service.shutdown();
 
     }
 
+}
+
+class MyThread extends Thread {
+
+    private AppointmentCenter2 appCenter;
+
+    public MyThread(AppointmentCenter2 appCenter) {
+        this.appCenter = appCenter;
+    }
+
+    @Override
+    public void run() {
+        String tname= Thread.currentThread().getName();
+        System.out.println("++ " +tname+ " has started");
+        System.out.println("Appointment Date: "+appCenter.getAppointmentDate());
+        System.out.println(".. "+tname+ " has finished");
+    }
 }

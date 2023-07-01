@@ -59,7 +59,7 @@ class MyThread extends Thread {
     public void run() {
         String tname= Thread.currentThread().getName();
         System.out.println("++ " +tname+ " has started");
-        System.out.println("Appointment Date: "+appCenter.getAppointmentDate());
+        System.out.println("Appointment Date: "+tname+" "+appCenter.getAppointmentDate());
         System.out.println(".. "+tname+ " has finished");
     }
 }
